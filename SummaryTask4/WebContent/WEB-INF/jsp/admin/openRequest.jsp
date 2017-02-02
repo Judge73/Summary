@@ -1,0 +1,30 @@
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="style.css" rel="style">
+<c:set var="title" value="Requests" scope="page"/>
+<%@ include file="/WEB-INF/jspf/head.jspf" %>
+</head>
+<body>
+<c:if test="${param['locale'] != null}">
+  <fmt:setLocale value="${param['locale']}" scope="session" />
+</c:if>
+<fmt:bundle basename="resources">
+<%@ include file="/WEB-INF/jspf/header.jspf" %>
+	<form action="controller">
+	<fieldset>
+	<input type="hidden" name="command" value="updateRequestStatus"/>
+	<input type="hidden" name="requestId" value="${request.id}"/>
+	<fmt:message key="Header"/><br/>
+	<input name="Header" value="${request.header}" readonly>
+	<fmt:message key="Description"/><br/>
+	<textarea rows="4" cols="40" name="decription" readonly>${request.description}</textarea><br/>
+	<button name="status" value="2"><fmt:message key="Approve"/></button>
+	<button name="status" value="3"><fmt:message key="Decline"/></button>	
+	</fieldset>
+	</form>
+	</fmt:bundle>
+</body>
+</html>

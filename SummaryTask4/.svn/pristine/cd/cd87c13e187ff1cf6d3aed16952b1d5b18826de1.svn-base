@@ -1,0 +1,53 @@
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="style.css" rel="style">
+<c:set var="title" value="ConfigureFlight" scope="page"/>
+<%@ include file="/WEB-INF/jspf/head.jspf" %>
+</head>
+<body>
+<c:if test="${param['locale'] != null}">
+  <fmt:setLocale value="${param['locale']}" scope="session" />
+</c:if>
+<fmt:bundle basename="resources">
+<form method="post" action="controller">
+	<input type="hidden" name="command" value="configureFlight">
+	<input type="hidden" name="flightId" value="${flight.id}">
+	<fieldset>
+		<legend><fmt:message key="Origin"/></legend>
+		<input name="origin" value="${flight.origin}" required><br/>
+	</fieldset>
+	<fieldset>
+		<legend><fmt:message key="Destination"/></legend>
+		<input name="destination" value="${flight.destination}" required><br/>
+	</fieldset>
+	<fieldset>
+		<legend><fmt:message key="DepartureDate"/></legend>
+		<input name="year" maxlength="4" size="4" value="${Year}" class="float" required>
+		<input name="month" maxlength="2" size="2" value="${Month}" class="float" required>
+		<input name="day" maxlength="2" size="2" value="${Day}" class="float" required>
+		<input name="hour" maxlength="2" size="2" value="${Hour}" class="float" required>:
+		<input name="minute" maxlength="2" size="2" value="${Minute}" class="float" required>
+	</fieldset>
+	<fieldset>
+		<legend><fmt:message key="Status"/></legend>
+		<select name="statuses">
+		<c:forEach begin="0" end="${flightStatuses-1}" step="1" var="index">
+         <c:choose>
+         <c:when test="${flight.statusId==index}">
+         	<option selected value="${index}"><ex:fstatus statusId="${index}"/></option>
+         </c:when>
+         <c:otherwise>
+         	<option value="${index}"><ex:fstatus statusId="${index}"/></option>
+         </c:otherwise>
+         </c:choose>
+     </c:forEach> 
+		</select>
+	</fieldset>
+	<button type="submit"><fmt:message key="Update"/></button>
+	</form>
+		</fmt:bundle>
+</body>
+</html>

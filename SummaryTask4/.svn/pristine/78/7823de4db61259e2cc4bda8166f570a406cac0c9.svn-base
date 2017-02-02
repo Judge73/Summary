@@ -1,0 +1,25 @@
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>2.0</jsp-version>
+  <uri>ctags</uri>
+  <tag>
+    <name>fstatus</name>
+    <tag-class>ua.nure.kotkov.SummaryTask4.tag.FlightStatusTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+       <name>statusId</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>job</name>
+    <tag-class>ua.nure.kotkov.SummaryTask4.tag.JobTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+       <name>jobId</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+</taglib>

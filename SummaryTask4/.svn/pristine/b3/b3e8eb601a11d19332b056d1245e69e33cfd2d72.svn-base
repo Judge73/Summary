@@ -1,0 +1,51 @@
+AdminFlightView = admin flight view
+AdminEmployeeView = admin employee view
+DispatcherView = dispatcher view
+Logout logout
+Settings settings
+Status = status
+Origin origin
+Destination destination
+Date date
+Add add
+Remove remove
+Update update
+Configure configure
+Select select
+Login login
+Password password
+FirstName first name
+LastName last name
+Role role
+Header header
+Description description
+Open open
+DepartureDate departure date
+Approve approve
+Decline decline
+WriteRequest Write request
+Send send
+Year year
+Month month
+Day day
+Time time
+FormCrew Form crew
+Pilots pilots
+Navigators navigators
+Operators operators
+Stewardessess stewardessess
+SetStatus Set status
+Flight flights
+Form form
+Set set
+Hour hour
+Minute minute
+Job job
+Requests requests
+Language language
+Russian russian
+English english
+Select select
+FreeCrew free crew
+Notifications notifications
+Selection selection
