@@ -18,16 +18,16 @@
 	<table>
 	<tr>
 		<td><fmt:message key="FirstName"/></td>
-		<td><input name="firstName" value="${emp.firstName}"></td>
+		<td><input name="firstName" value="${emp.firstName}" required></td>
 	</tr>
 	<tr>
 	<tr>
 		<td><fmt:message key="LastName"/></td>
-		<td><input name="lastName" value="${emp.lastName}"></td>
+		<td><input name="lastName" value="${emp.lastName}" required></td>
 	</tr>
 	<tr>
 		<td>Email</td>
-		<td><input name="email" value="${emp.email}"></td>
+		<td><input name="email" type="email" value="${emp.email}" required></td>
 	</tr>
 	<tr>
 		<td><fmt:message key="Job"/></td>

@@ -25,7 +25,7 @@
 	</tr>
 	<tr>
 		<td>Email</td>
-		<td><input name="email" required></td>
+		<td><input name="email" type="email" required></td>
 	</tr>
 	<tr>
 		<td><fmt:message key="Job"/></td>

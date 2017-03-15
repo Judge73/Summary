@@ -18,7 +18,6 @@ import ua.nure.kotkov.SummaryTask4.db.entity.User;
 /**
  * Login command.
  * 
- * @author D.Kolesnikov
  * @author M.Kotkov
  */
 public class LoginCommand extends Command {
@@ -41,9 +40,6 @@ public class LoginCommand extends Command {
 		LOG.trace("Request parameter: login --> " + login);
 
 		String password = request.getParameter("password");
-		if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
-			throw new AppException("Login/password cannot be empty");
-		}
 
 		User user = manager.findUserByLogin(login);
 		LOG.trace("Found in DB: user --> " + user);

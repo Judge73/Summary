@@ -25,10 +25,8 @@ import ua.nure.kotkov.SummaryTask4.exception.DBException;
 import ua.nure.kotkov.SummaryTask4.exception.Messages;
 
 /**
- * DB manager. Works with Apache Derby DB. Only the required DAO methods are
- * defined!
+ * DB manager. Works with Apache Derby DB.
  * 
- * @author D.Kolesnikov
  * @author M.Kotkov
  *
  */
@@ -85,7 +83,7 @@ public final class DBManager {
 	private static final String SQL_UPDATE_REQUEST_STATUS = "UPDATE requests "
 			+ "SET status_id=? WHERE id=?";
 
-	private static final String SQL_FIND_FLIGHT_BY_STATUS = "SELECT * FROM flights WHERE "
+	private static final String SQL_FIND_FLIGHTS_BY_STATUS = "SELECT * FROM flights WHERE "
 			+ "status_id=(SELECT status_id FROM statuses WHERE status_name=?)";
 
 	private static final String SQL_FIND_ALL_FLIGHTS = "SELECT * FROM flights";
@@ -366,15 +364,29 @@ public final class DBManager {
 	 * 
 	 * @return List of flight entries.
 	 */
-	public List<FlightBean> getFlightBeans() throws DBException {
+	public List<FlightBean> getFlightBeans(String sort) throws DBException {
 		List<FlightBean> listFlights = new ArrayList<>();
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection con = null;
+		String query = SQL_FIND_ALL_FLIGHTS;
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(SQL_FIND_ALL_FLIGHTS);
+			if(sort != null){
+				switch(sort){
+				case "Origin":
+					query += " ORDER BY origin";
+					break;
+				case "Destination":
+					query += " ORDER BY destination";
+					break;
+				case "Date":
+					query += " ORDER BY departure_date DESC";
+					break;
+				}
+			}
+			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				listFlights.add(extractFlight(rs));
 			}
@@ -393,14 +405,28 @@ public final class DBManager {
 	 * @return List of scheduled flights
 	 * @throws DBException
 	 */
-	public List<FlightBean> getScheduledFlightBeans() throws DBException {
+	public List<FlightBean> getScheduledFlightBeans(String sort) throws DBException {
 		List<FlightBean> listFlights = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection con = null;
+		String query = SQL_FIND_FLIGHTS_BY_STATUS;
 		try {
 			con = getConnection();
-			pstmt = con.prepareStatement(SQL_FIND_FLIGHT_BY_STATUS);
+			if(sort != null){
+				switch(sort){
+				case "Origin":
+					query += " ORDER BY origin";
+					break;
+				case "Destination":
+					query += " ORDER BY destination";
+					break;
+				case "Date":
+					query += " ORDER BY departure_date DESC";
+					break;
+				}
+			}
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, FlightStatus.SCHEDULED.getName());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {

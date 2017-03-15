@@ -1,9 +1,6 @@
 package ua.nure.kotkov.SummaryTask4.command.admin;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,23 +37,8 @@ public class ConfigureFlightPageCommand extends Command {
 		FlightBean flight = DBManager.getInstance().getFlightBean(flightId);
 		LOG.trace("Found in DB: flight --> " + flight);
 		int statuses = FlightStatus.values().length;
-		Timestamp date = flight.getDepartureDate();
-		Calendar temp = GregorianCalendar.getInstance();
-		temp.setTime(date);
-		int year = temp.get(Calendar.YEAR);
-		int month = temp.get(Calendar.MONTH);
-		int day = temp.get(Calendar.DAY_OF_MONTH);
-		int hour = temp.get(Calendar.HOUR);
-		int minute = temp.get(Calendar.MINUTE);
-		request.setAttribute("Year", year);
-		request.setAttribute("Month", month);
-		request.setAttribute("Day", day);
-		request.setAttribute("Hour", hour);
-		request.setAttribute("Minute", minute);
 		request.setAttribute("flightStatuses", statuses);
 		request.setAttribute("flight", flight);
-		LOG.trace("Set attribute: year-month-day hour:minute --> " + year + "-" + month + "-"
-				+ day + " " + hour + ":" + minute);
 		LOG.trace("Set attribute: flightStatuses --> " + statuses);
 		LOG.trace("Set attribute: flight --> " + flight);
 		LOG.traceExit();

@@ -50,7 +50,7 @@
     </init-param>
     <init-param>
       <param-name>common</param-name>
-      <param-value>logout noCommand viewSettings updateSettings sortFlight flightsStatuses</param-value>
+      <param-value>logout noCommand viewSettings updateSettings sortFlight</param-value>
     </init-param>
     <init-param>
       <param-name>out-of-control</param-name>

@@ -17,7 +17,7 @@
 		<h4><fmt:message key="Header"/></h4>
 		<input name="header" required>
 		<h4><fmt:message key="Description"/></h4>
-		<textarea name="description" cols="40" rows="5"></textarea><br/>
+		<textarea name="description" cols="40" rows="5" required></textarea><br/>
 		<button type = "submit"><fmt:message key="Send"/></button>
 	</form>
 	</fmt:bundle>

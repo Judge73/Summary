@@ -23,10 +23,10 @@
 	<input type="hidden" name="command" value="sortFlight"/>
 	<table>
 	<tr>
-		<td class="fh"><button class="button tableButton" name="sortFlight" value="Id">Id</button></td>
-		<td class="fh"><button class="button tableButton" name="sortFlight" value="Origin"><fmt:message key="Origin"/></button></td>
-		<td class="fh"><button class="button tableButton" name="sortFlight" value="Destination"><fmt:message key="Destination"/></button></td>
-		<td class="fh"><button class="button tableButton" name="sortFlight" value="Date"><fmt:message key="Date"/></button></td>
+		<td class="fh"><button class="button sortButton" name="sortFlight" value="Id">Id</button></td>
+		<td class="fh"><button class="button sortButton" name="sortFlight" value="Origin"><fmt:message key="Origin"/></button></td>
+		<td class="fh"><button class="button sortButton" name="sortFlight" value="Destination"><fmt:message key="Destination"/></button></td>
+		<td class="fh"><button class="button sortButton" name="sortFlight" value="Date"><fmt:message key="Date"/></button></td>
 		<td class="fh"><fmt:message key="Status"/></td>
 	</tr>
 		<c:forEach items="${flights}" var="flight">

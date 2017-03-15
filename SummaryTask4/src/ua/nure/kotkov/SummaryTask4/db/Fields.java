@@ -37,9 +37,5 @@ public final class Fields {
 	public static final String REQUEST_BEAN_USER_ID = "user_id";	
 	public static final String REQUEST_BEAN_HEADER = "header";	
 	public static final String REQUEST_BEAN_DESCRIPTION = "description";
-	public static final String REQUEST_BEAN_STATUS_NAME = "status_name";
-	
-	public static final String EMAILREGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	
+	public static final String REQUEST_BEAN_STATUS_NAME = "status_name";	
 }

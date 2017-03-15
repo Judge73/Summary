@@ -1,7 +1,6 @@
 package ua.nure.kotkov.SummaryTask4.command.admin;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import ua.nure.kotkov.SummaryTask4.Path;
 import ua.nure.kotkov.SummaryTask4.MailSender.MailSender;
 import ua.nure.kotkov.SummaryTask4.command.Command;
 import ua.nure.kotkov.SummaryTask4.db.DBManager;
-import ua.nure.kotkov.SummaryTask4.db.Fields;
 import ua.nure.kotkov.SummaryTask4.db.Job;
 import ua.nure.kotkov.SummaryTask4.db.bean.EmployeeBean;
 import ua.nure.kotkov.SummaryTask4.exception.AppException;
@@ -46,12 +44,6 @@ public class ConfigureEmployeeCommand extends Command {
 		int jobId = Integer.parseInt(request.getParameter("job"));
 		LOG.trace("Got param: job -->" + jobId);
 		boolean notifyByMail = (boolean) request.getSession().getAttribute("mailNotification");
-		if(firstName == null || lastName == null || firstName.isEmpty() || lastName.isEmpty()){
-			throw new AppException("wrong first/last- name");
-		}
-		if(!Pattern.matches(Fields.EMAILREGEX, email)){
-			throw new AppException("wrong email");
-		}
 		EmployeeBean emp = new EmployeeBean();
 		emp.setId(employeeId);
 		emp.setFirstName(firstName);

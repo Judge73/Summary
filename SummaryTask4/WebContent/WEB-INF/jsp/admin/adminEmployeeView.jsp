@@ -13,6 +13,7 @@
 </c:if>
 <fmt:bundle basename="resources">
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
+
 <div class="successDiv">
 	<c:if test="${result != null}">
   		<c:out value="${result}"/>

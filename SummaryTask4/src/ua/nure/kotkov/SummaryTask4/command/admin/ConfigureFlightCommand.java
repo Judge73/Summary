@@ -37,25 +37,9 @@ public class ConfigureFlightCommand extends Command {
 		LOG.trace("Got param: origin -->" + origin);
 		String destination = request.getParameter("destination");
 		LOG.trace("Got param: destination -->" + destination);
-		String year = request.getParameter("year");
-		LOG.trace("Got param: year -->" + year);
-		String month = request.getParameter("month");
-		LOG.trace("Got param: month -->" + month);
-		String day = request.getParameter("day");
-		LOG.trace("Got param: day -->" + day);
-		String hour = request.getParameter("hour");
-		LOG.trace("Got param: hour -->" + hour);
-		String minute = request.getParameter("minute");
-		LOG.trace("Got param: minute -->" + minute);
-		if(origin == null || destination == null || origin.isEmpty() || destination.isEmpty()){
-			throw new AppException("wrong origin/destination");
-		}
-		if(year == null || month == null || day == null || hour == null || minute == null ||
-			year.isEmpty() || month.isEmpty() || day.isEmpty() || hour.isEmpty() || minute.isEmpty()){
-			throw new AppException("wrong date");
-		}
-		Timestamp date = Timestamp.valueOf(year + "-" + month + "-" + day + " "
-				+ hour + ":" + minute + ":00");
+		String dt = request.getParameter("date");
+		LOG.trace("Got param: dt -->" + dt);
+		Timestamp date = Timestamp.valueOf(dt + ":00");
 		LOG.trace("Date: --> " + date);
 		int statusId = Integer.parseInt(request.getParameter("statuses"));
 		LOG.trace("Got param: statusId -->" + statusId);

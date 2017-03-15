@@ -12,6 +12,14 @@
   <fmt:setLocale value="${param['locale']}" scope="session" />
 </c:if>
 <fmt:bundle basename="resources">
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#datetimepicker').datetimepicker({
+		dateFormat: 'yy-mm-dd'
+	});
+	$("button:submit").button();
+});
+</script>
 <form method="post" action="controller">
 	<input type="hidden" name="command" value="configureFlight">
 	<input type="hidden" name="flightId" value="${flight.id}">
@@ -25,11 +33,7 @@
 	</fieldset>
 	<fieldset>
 		<legend><fmt:message key="DepartureDate"/></legend>
-		<input name="year" maxlength="4" size="4" value="${Year}" class="float" required>
-		<input name="month" maxlength="2" size="2" value="${Month}" class="float" required>
-		<input name="day" maxlength="2" size="2" value="${Day}" class="float" required>
-		<input name="hour" maxlength="2" size="2" value="${Hour}" class="float" required>:
-		<input name="minute" maxlength="2" size="2" value="${Minute}" class="float" required>
+		<input type="text" value="${flight.departureDate}" name="date" id="datetimepicker" required>
 	</fieldset>
 	<fieldset>
 		<legend><fmt:message key="Status"/></legend>

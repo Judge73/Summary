@@ -16,7 +16,6 @@ import ua.nure.kotkov.SummaryTask4.command.admin.ConfigureEmployeeCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.ConfigureEmployeePageCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.ConfigureFlightCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.ConfigureFlightPageCommand;
-import ua.nure.kotkov.SummaryTask4.command.admin.FlightsStatusesCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.FreeCrewCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.OpenRequestCommand;
 import ua.nure.kotkov.SummaryTask4.command.admin.OpenRequestsPageCommand;
@@ -68,7 +67,6 @@ public class CommandContainer {
 		commands.put("openRequestsPage", new OpenRequestsPageCommand());
 		commands.put("openRequest", new OpenRequestCommand());
 		commands.put("updateRequestStatus", new UpdateRequestStatusCommand());
-		commands.put("flightsStatuses", new FlightsStatusesCommand());
 		
 		LOG.debug("Command container was successfully initialized");
 		LOG.trace("Number of commands --> " + commands.size());

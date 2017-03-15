@@ -17,11 +17,11 @@ after you submit current form.
 
 					<fieldset>
 						<legend align="center">Login</legend>
-						<input name="login"/><br/>
+						<input name="login" required/><br/>
 					</fieldset><br/>
 					<fieldset>
 						<legend align="center">Password</legend>
-						<input type="password" name="password"/>
+						<input type="password" name="password" required/>
 					</fieldset><br/>
 					
 					<input type="submit" value="Login">								
