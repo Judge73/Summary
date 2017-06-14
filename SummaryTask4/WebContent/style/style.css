@@ -8,13 +8,14 @@ blue {
 	background-color: #3b8ec2; 
 }
 
-.successDiv {
+#successDiv {
 	margin-top: 40px;
 }
 
-.controlDiv{
-	float: right;
-	margin: auto;
+#controlDiv{
+	position: fixed;
+	top: 100px;
+    right: 50px; 
 }
 
 .tableButton {
@@ -73,7 +74,7 @@ table {
 	text-align: center;
 }
 
-td {
+td, th {
 	border-style: groove;
 	padding: 2px;
 }
@@ -89,6 +90,25 @@ td {
 fieldset {
 	display: inline;
 	float: bottom;
+}
+/***************************************************************
+Dispatcher view
+***************************************************************/
+
+#flightsDiv {
+	position: relative;
+	top: 50px;
+	left: 10px;
+	width: 70%;
+}
+
+/***************************************************************
+Requests
+***************************************************************/
+
+#requestsForm {
+	position: relative;
+	top: 50px;
 }
 
 /***************************************************************
@@ -195,41 +215,4 @@ Settings form (settings.jsp)
 
 #settings_form > input[type=submit] {
 	margin-top: 10px;
-}
-
-/***************************************************************
-List menu table (list_menu.jsp)
-***************************************************************/
-#list_menu_table {
-	margin-top: 5px;
-}
-
-#list_menu_table thead {
-	text-align: center;
-}
-
-#list_menu_table td:last-child {
-	text-align: center;
-}
-
-/***************************************************************
-List order table (list_order.jsp)
-***************************************************************/
-#list_order_table > thead > tr {
-	text-align: center;
-}
-
-#list_order_table td + td + td {
-	text-align: center;
-}
-
-#list_order_table > tbody td + td + td + td {
-	text-align: left;
-}
-
-/***************************************************************
-Make order form (list_menu.jsp)
-***************************************************************/
-#make_order {
-	margin-top: 5px;
 }

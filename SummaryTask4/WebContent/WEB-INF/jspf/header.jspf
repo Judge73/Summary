@@ -40,7 +40,6 @@ This way we define the USER MENU.
 This way we define the settings anchor.
 ===========================================================================--%> 
 	<a href="controller?command=viewSettings"><fmt:message key="Settings"/></a> &nbsp;
-	<a href="controller?command=flightsStatuses"><fmt:message key="FlightsStatuses"/></a> &nbsp;
 
 </div>
 

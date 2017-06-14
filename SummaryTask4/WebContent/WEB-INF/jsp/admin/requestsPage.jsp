@@ -18,6 +18,7 @@
   		<c:out value="${result}"/>
 	</c:if>
 	</div>
+<div id="requestsForm">
 <form method="post" action="controller">
 	<input type="hidden" name="command" value="openRequest"/>
 	<table>
@@ -40,6 +41,7 @@
 	</table>
 	<button type="submit"><fmt:message key="Open"/></button>
 	</form>
+	</div>
 </fmt:bundle>
 </body>
 </html>

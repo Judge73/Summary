@@ -74,7 +74,7 @@ public final class DBManager {
 	
 	private static final String SQL_FIND_EMPLOYEE_BY_ID = "SELECT * FROM employees WHERE id=?";
 	
-	private static final String SQL_FIND_ALL_EMPLOYEES = "SELECT * FROM employees";
+	private static final String SQL_FIND_EMPLOYEES = "SELECT * FROM employees";
 	
 	private static final String SQL_FIND_ALL_FREE_EMPLOYEES = "SELECT * FROM employees WHERE avalible=true";
 	
@@ -310,15 +310,32 @@ public final class DBManager {
 	 * 
 	 * @return List of employee beans.
 	 */
-	public List<EmployeeBean> getEmployeeBeans() throws DBException {
+	public List<EmployeeBean> getEmployeeBeans(String sort) throws DBException {
 		List<EmployeeBean> employeesList = new ArrayList<EmployeeBean>();
 		Statement stmt = null;
 		ResultSet rs = null;
 		Connection con = null;
+		String query = SQL_FIND_EMPLOYEES;
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(SQL_FIND_ALL_EMPLOYEES);
+			if(sort != null){
+				switch(sort){
+				case "FirstName":
+					query += " ORDER BY first_name";
+					break;
+				case "LastName":
+					query += " ORDER BY last_name";
+					break;
+				case "Job":
+					query += " ORDER BY job_id DESC";
+					break;
+				case "Email":
+					query += " ORDER BY email";
+					break;
+				}
+			}
+			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				employeesList.add(extractEmployeeBean(rs));
 			}
@@ -383,6 +400,9 @@ public final class DBManager {
 					break;
 				case "Date":
 					query += " ORDER BY departure_date DESC";
+					break;
+				case "Status":
+					query += " ORDER BY status_id";
 					break;
 				}
 			}
@@ -755,7 +775,7 @@ public final class DBManager {
 			pstmt.setString(k++, fb.getOrigin());
 			pstmt.setString(k++, fb.getDestination());
 			pstmt.setTimestamp(k++, fb.getDepartureDate());
-			pstmt.setInt(k, fb.getStatusId());
+			pstmt.setInt(k, fb.getFlightStatusId());
 			result = pstmt.executeUpdate();
 			con.commit();
 		} catch (SQLException ex) {
@@ -1249,7 +1269,7 @@ public final class DBManager {
 		flight.setOrigin(rs.getString(Fields.FLIGHT_ORIGIN));
 		flight.setDestination(rs.getString(Fields.FLIGHT_DESTINATION));
 		flight.setDepartureDate(rs.getTimestamp(Fields.FLIGHT_DEPARTURE_DATE));
-		flight.setStatusId(rs.getInt(Fields.FLIGHT_STATUS_ID));
+		flight.setFlightStatusId(rs.getInt(Fields.FLIGHT_STATUS_ID));
 		return flight;
 	}
 	

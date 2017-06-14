@@ -2,7 +2,6 @@ package ua.nure.kotkov.SummaryTask4.command.dispatcher;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import ua.nure.kotkov.SummaryTask4.Path;
 import ua.nure.kotkov.SummaryTask4.command.Command;
@@ -37,7 +40,18 @@ public class DispatcherViewCommand extends Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, AppException {
 		
-		LOG.debug("Command starts");
+		LOG.traceEntry();
+		String[] statusNames = FlightStatus.names();
+		ObjectMapper objectMapper = new ObjectMapper();
+    	objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    	String jsonStatuses = null;
+    	try {
+			jsonStatuses = objectMapper.writeValueAsString(statusNames);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("jsonStatuses", jsonStatuses);
+		LOG.trace("Set attribute: jsonStatuses --> " + jsonStatuses);
 		List<EmployeeBean> employees = DBManager.getInstance().getFreeEmployees();
 		LOG.trace("Found in DB: employees --> " + employees);
 		String sort = (String) request.getAttribute("sortFlight");
@@ -84,7 +98,7 @@ public class DispatcherViewCommand extends Command {
 		request.setAttribute("stewardessess", stewardessess);
 		LOG.trace("Set the request attribute: stewardessess --> " + stewardessess);
 		
-		LOG.debug("Command finished");
+		LOG.traceExit();
 		return Path.PAGE_DISP_VIEW;
 	}
 

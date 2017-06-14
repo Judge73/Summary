@@ -22,13 +22,6 @@ import org.apache.logging.log4j.Logger;
 import ua.nure.kotkov.SummaryTask4.Path;
 import ua.nure.kotkov.SummaryTask4.db.Role;
 
-/**
- * Security filter. Disabled by default. Uncomment Security filter
- * section in web.xml to enable.
- * 
- * @author D.Kolesnikov
- * 
- */
 public class CommandAccessFilter implements Filter {
 	
 	private static final Logger LOG = LogManager.getLogger(CommandAccessFilter.class);
@@ -74,7 +67,7 @@ public class CommandAccessFilter implements Filter {
 		}
 		
 		HttpSession session = httpRequest.getSession(false);
-		if (session == null) { 
+		if (session == null) {
 			return false;
 		}
 		
@@ -82,7 +75,7 @@ public class CommandAccessFilter implements Filter {
 		if (userRole == null) {
 			return false;
 		}
-		
+		LOG.debug("Role:" + userRole + " command: " + commandName);
 		return accessMap.get(userRole).contains(commandName)
 				|| commons.contains(commandName);
 	}

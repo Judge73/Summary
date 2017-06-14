@@ -48,7 +48,7 @@ public class AddFlightCommand extends Command{
 		fb.setOrigin(origin);
 		fb.setDestination(destination);
 		fb.setDepartureDate(date);
-		fb.setStatusId(statusId);
+		fb.setFlightStatusId(statusId);
 		rows = DBManager.getInstance().addFlight(fb);
 		if(rows > 0){
 			success = 1;

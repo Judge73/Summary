@@ -8,7 +8,7 @@ public class FlightBean {
 	private String origin;
 	private String destination;
 	private Timestamp departureDate;
-	private int statusId;
+	private int flightStatusId;
 	
 	public int getId() {
 		return id;
@@ -34,11 +34,11 @@ public class FlightBean {
 	public void setDepartureDate(Timestamp departureDate) {
 		this.departureDate = departureDate;
 	}
-	public int getStatusId() {
-		return statusId;
+	public int getFlightStatusId() {
+		return flightStatusId;
 	}
-	public void setStatusId(int status_id) {
-		this.statusId = status_id;
+	public void setFlightStatusId(int flightStatusId) {
+		this.flightStatusId = flightStatusId;
 	}
 	public long getTime(){
 		return departureDate.getTime();
@@ -46,7 +46,7 @@ public class FlightBean {
 	@Override
 	public String toString() {
 		return "FlightBean [id=" + id + ", origin=" + origin + ", destination=" + destination + ", departureDate="
-				+ departureDate + ", statusId=" + statusId + "]";
+				+ departureDate + ", flightStatusId=" + flightStatusId + "]";
 	}
 	
 }

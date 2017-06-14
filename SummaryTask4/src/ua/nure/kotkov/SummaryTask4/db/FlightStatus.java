@@ -1,5 +1,7 @@
 package ua.nure.kotkov.SummaryTask4.db;
 
+import java.util.Arrays;
+
 import ua.nure.kotkov.SummaryTask4.db.bean.FlightBean;
 
 public enum FlightStatus {
@@ -7,7 +9,7 @@ public enum FlightStatus {
 	DELAYED, ARRIVED, EN_ROUTE, SCHEDULED, CANCELED;
 	
 	public static FlightStatus getStatus(FlightBean flight) {
-		int statusId = flight.getStatusId();
+		int statusId = flight.getFlightStatusId();
 		return FlightStatus.values()[statusId];
 	}
 	
@@ -17,6 +19,10 @@ public enum FlightStatus {
 	
 	public String getName() {
 		return name().toLowerCase();
+	}
+	
+	public static String[] names() {
+	    return Arrays.toString(FlightStatus.values()).replaceAll("^.|.$", "").split(", ");
 	}
 	
 }

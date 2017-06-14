@@ -39,10 +39,8 @@ public class CommandContainer {
 		commands.put("login", new LoginCommand());
 		commands.put("logout", new LogoutCommand());
 		commands.put("noCommand", new NoCommand());
-		commands.put("sortFlight", new SortFlightCommand());
 		commands.put("viewSettings", new ViewSettingsCommand());
 		commands.put("updateSettings", new UpdateSettingsCommand());
-		
 		// dispatcher commands
 		commands.put("dispatcherView", new DispatcherViewCommand());
 		commands.put("formCrew", new FormCrewCommand());

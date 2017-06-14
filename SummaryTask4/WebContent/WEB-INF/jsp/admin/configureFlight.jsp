@@ -17,6 +17,7 @@ $(document).ready(function(){
 	$('#datetimepicker').datetimepicker({
 		dateFormat: 'yy-mm-dd'
 	});
+	$('#datetimepicker').timepicker('setTime', new Date('${flight.departureDate}'));
 	$("button:submit").button();
 });
 </script>
@@ -33,14 +34,14 @@ $(document).ready(function(){
 	</fieldset>
 	<fieldset>
 		<legend><fmt:message key="DepartureDate"/></legend>
-		<input type="text" value="${flight.departureDate}" name="date" id="datetimepicker" required>
+		<input type="text" name="date" id="datetimepicker" required>
 	</fieldset>
 	<fieldset>
 		<legend><fmt:message key="Status"/></legend>
 		<select name="statuses">
 		<c:forEach begin="0" end="${flightStatuses-1}" step="1" var="index">
          <c:choose>
-         <c:when test="${flight.statusId==index}">
+         <c:when test="${flight.flightStatusId==index}">
          	<option selected value="${index}"><ex:fstatus statusId="${index}"/></option>
          </c:when>
          <c:otherwise>
